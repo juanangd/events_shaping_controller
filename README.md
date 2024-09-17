@@ -1,9 +1,8 @@
-
-
-
 # Shaping the Spatio-Temporal Structure of Event-based camera stream for robot control. 
 
 Velocity based control of a Franka Panda robot through Event-based camera spatio-temporal streams active Shaping. 
+
+
 ![EventShaper](event_shaper_img.png | width=300)
 
 Features:
