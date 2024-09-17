@@ -3,7 +3,8 @@
 Velocity based control of a Franka Panda robot through Event-based camera spatio-temporal streams active Shaping. 
 
 
-![EventShaper](event_shaper_img.png | width=300)
+
+<img src="url" alt="alt text" width="event_shaper_img.png" height="300">
 
 Features:
 - Runs on ROS (Python and C++ nodes)
