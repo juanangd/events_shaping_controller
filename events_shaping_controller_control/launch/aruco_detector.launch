@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="aruco_detector" pkg="events_shaping_controller_control" type="aruco_marker_detector.py" >
+  </node>
+
+</launch>

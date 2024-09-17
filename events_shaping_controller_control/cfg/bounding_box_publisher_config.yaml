@@ -1,0 +1,7 @@
+bounding_box:
+
+  bounding_box_center_is_camera_center: True
+  bounding_box_height: 200
+  bounding_box_width: 200
+  bounding_box_center_x: 173
+  bounding_box_center_y: 130

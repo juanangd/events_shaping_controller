@@ -1,0 +1,25 @@
+bounding_box:
+
+  bounding_box_center_is_camera_center: True
+  bounding_box_height: 260
+  bounding_box_width: 260
+  bounding_box_center_x: 173
+  bounding_box_center_y: 130
+
+approach_commander:
+
+  publish_jacobian_computed: True
+  publish_events_analyzed: True
+  analyze_only_bounding_box: True
+  num_events_threshold: 100
+  sliding_window_time_jacobian: 0.1 # s
+  maximum_num_events_to_process: 100000 # 100000
+  alpha_ema: 0.7
+  jacobian_computation_freq: 50
+  learning_rate: 8. #8. # 5 # 100.0 for variance
+  max_commander_vel_saturation: 0.3 # m / s
+  sharpness_function_type: variance # rad / s
+  velocity_gain: 0.15
+  divergence_rate_target: -0.25
+  init_smoothing_time: 0.5
+  initial_measure_distance: 0.70

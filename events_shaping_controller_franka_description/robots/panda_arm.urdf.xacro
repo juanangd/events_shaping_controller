@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+
+  <!-- Name of this panda -->
+  <xacro:arg name="arm_id" default="panda" />
+  
+  <!-- POSTERITY START -->
+  <!-- Should a franka_gripper be mounted at the flange?" -->
+  <!-- Unlike for the panda arm xacro this file is based off of,
+  the hand configuration is always known. That is, for real robot
+  there is a hand. For simulated robot, no hand because simulating 
+  the hand is pain there. So changes have been done accordingly
+  below!-->
+  <!-- <xacro:arg name="hand" default="false" /> -->
+  <!-- POSTERITY END -->
+
+    <!-- Create a URDF for a real hardware -->
+    <xacro:include filename="$(find franka_description)/robots/panda_arm.xacro" />
+    <xacro:panda_arm arm_id="$(arg arm_id)" safety_distance="0.03"/>
+
+    <xacro:include filename="$(find franka_description)/robots/hand.xacro"/>
+    <xacro:hand arm_id="$(arg arm_id)" rpy="0 0 ${-pi/4}" connected_to="$(arg arm_id)_link8" safety_distance="0.03"/>
+
+    <joint name="event_camera_joint" type="fixed">
+      <origin xyz="-0.043 0.039 0.096" rpy="-0.026 -0.012 -2.341"/>
+      <parent link="$(arg arm_id)_link8" />
+      <child  link="event_camera_optical_frame" />
+    </joint>
+
+    <!-- Define the camera frame -->
+    <link name="event_camera_optical_frame">
+      <!-- Camera frame properties such as origin, geometry, and visualization -->
+      <!-- Add your desired properties here -->
+    </link>
+
+</robot>

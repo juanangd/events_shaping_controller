@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- The below machine file makes control PC the 
+  "default" machine to execute nodes in. So it is not required to
+  explicitly mention machine tag in the nodes that are called below.-->
+  <include file="$(find events_shaping_controller_control)/launch/setup.machine" />
+  
+  <arg name="output_type" default="screen" />
+
+  <rosparam command="load" file="$(find events_shaping_controller_control)/cfg/controllers_config.yaml" />
+  
+  <arg name="robot_ip" />
+  <include file="$(find events_shaping_controller_control)/launch/franka_control.launch" >
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+  </include>
+
+  <!-- =========GCVS CONTROLLERS START========= -->
+  <!-- TODO: Make the below controllers switchable from arguments -->
+
+  <!-- Franka Cartesian controller -->
+  <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="$(arg output_type)"  args="cartesian_velocity_controller"/> -->
+
+  <!-- Task priority controller (Fixed tasks) using Franka joint controller -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="$(arg output_type)"  args="task_priority_joint_velocity_controller"/>
+  <!-- ==========GCVS CONTROLLERS END========== -->
+  
+  <!-- Visualization of robot state -->
+  <!-- <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find events_shaping_controller_control)/launch/robot.rviz"/> -->
+</launch>

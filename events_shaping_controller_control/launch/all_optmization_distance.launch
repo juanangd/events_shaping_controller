@@ -1,0 +1,29 @@
+<launch>
+  <!-- The below machine file makes control PC the
+  "default" machine to execute nodes in. So it is not required to
+  explicitly mention machine tag in the nodes that are called below.-->
+  <include file="$(find events_shaping_controller_control)/launch/setup.machine" />
+
+  <rosparam command="load" file="$(find events_shaping_controller_control)/cfg/all_distance_optm.yaml" />
+
+  <!-- "Low-level" controllers to command Franka Emika Panda-->
+  <include file="$(find events_shaping_controller_control)/launch/controllers.launch" pass_all_args="True">
+    <arg name="robot_ip" value="192.168.100.11" />
+  </include>
+
+  <include file="$(find dvs_renderer)/launch/davis_mono.launch"/>
+
+  <!--><include file="$(find events_shaping_controller_control)/launch/event_based_optical_flow.launch"/>-->
+  <node name="image_publisher_with_bounding_box" pkg="events_shaping_controller_control" type="publish_image_with_bounding_box.py" >
+  </node>
+
+  <node name="synchronizator" pkg="events_shaping_controller_control" type="nodes_synchronization.py" >
+  </node>
+
+  <node name="heuristic_commander" pkg="events_shaping_controller_control" type="command_heuristic.py">
+  </node>
+
+  <node name="gaze_lock_commander" pkg="events_shaping_controller_control" type="command_gaze_lock_IAE.py" >
+  </node>
+
+</launch>

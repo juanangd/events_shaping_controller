@@ -1,0 +1,8 @@
+<launch>
+
+  <node name="events_centroids" pkg="events_shaping_controller_control" type="events_centroids.py" >
+  </node>
+
+  <include file="$(find dvs_renderer)/launch/davis_mono.launch"/>
+
+</launch>

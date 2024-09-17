@@ -1,0 +1,14 @@
+<launch>
+
+  <!--><node pkg="rosbag" type="play" name="player" args="-r 1.0 -d 1. -s 0 /home/juan/only_translation_fast.bag" />-->
+  <include file="$(find dvs_renderer)/launch/davis_mono.launch"/>
+
+  <rosparam command="load" file="$(find events_shaping_controller_control)/cfg/derivative_calculator.yaml" />
+
+  <node name="image_publisher_with_bounding_box" pkg="events_shaping_controller_control" type="publish_image_with_bounding_box.py" >
+  </node>
+
+  <node name="derivative_evaluator" pkg="events_shaping_controller_control" type="iwe_derivative_calculator.py" >
+  </node>
+
+</launch>

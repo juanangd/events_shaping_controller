@@ -1,0 +1,21 @@
+bounding_box:
+
+  bounding_box_height: 200
+  bounding_box_width: 200
+  bounding_box_center_x: 173
+  bounding_box_center_y: 130
+
+derivative_evaluator:
+
+  analyze_only_bounding_box: False
+  alpha_ema: 1.0
+  num_events_threshold: 300
+  maximum_num_events_to_process: 700
+  computation_loop_freq: 100
+  window_time: 0.02 #s
+  sharpness_fun_type: "variance"
+  motion_model: "rotation"
+  param_to_eval:
+    - False
+    - True
+    - False

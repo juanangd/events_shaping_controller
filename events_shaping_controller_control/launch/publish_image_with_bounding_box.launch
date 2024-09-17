@@ -1,0 +1,12 @@
+<launch>
+
+    <include file="$(find dvs_renderer)/launch/davis_mono.launch"/>
+
+    <include file="$(find events_shaping_controller_control)/launch/detect_checker_board.launch"/>
+
+      <rosparam command="load" file="$(find events_shaping_controller_control)/cfg/bounding_box_publisher_config.yaml" />
+
+    <node name="image_publisher_with_bounding_box" pkg="events_shaping_controller_control" type="publish_image_with_bounding_box.py" >
+    </node>
+
+</launch>

@@ -1,0 +1,13 @@
+<library path="lib/libevents_shaping_controller_control">
+    <class name="events_shaping_controller_control/CartesianVelocityController" type="events_shaping_controller_control::CartesianVelocityController" base_class_type="controller_interface::ControllerBase">
+        <description>
+            A controller that is catered to serve Cartesian velocity commands issued by gaze-controlled visual servoing schemes
+        </description>
+    </class>
+
+    <class name="events_shaping_controller_control/TPJointVelocityController" type="events_shaping_controller_control::TPJointVelocityController" base_class_type="controller_interface::ControllerBase">
+        <description>
+            A controller that is catered to serve joint velocity commands issued by gaze-controlled visual servoing schemes
+        </description>
+    </class>
+</library>

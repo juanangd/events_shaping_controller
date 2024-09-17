@@ -1,0 +1,36 @@
+<launch>
+  <!-- The below machine file makes control PC the
+  "default" machine to execute nodes in. So it is not required to
+  explicitly mention machine tag in the nodes that are called below.-->
+  <include file="$(find events_shaping_controller_control_control)/launch/setup.machine" />
+
+  <!--<rosparam command="load" file="$(find events_shaping_controller_control_control)/cfg/constrained_approach_motion.yaml" /> -->
+
+  <!-- In case any parameters need to be overriden. Helpful for debugging. -->
+  <!--><rosparam command="load" file="$(find events_shaping_controller_control_control)/cfg/all_config_optm_wy_override.yaml" />-->
+
+
+  <!-- "Low-level" controllers to command Franka Emika Panda-->
+  <include file="$(find events_shaping_controller_control_control)/launch/controllers.launch" pass_all_args="True">
+    <arg name="robot_ip" value="192.168.100.11" />
+  </include>
+
+  <node name="nodes_sync" pkg="events_shaping_controller_control_control" type="nodes_synchronization.py">
+  </node>
+
+  <include file="$(find dvs_renderer)/launch/davis_mono.launch"/>
+
+  <!--><node name="event-based_flow" pkg="events_shaping_controller_control_control" type="event_based_optical_flow.py" >
+  </node>-->
+
+  <!--<node name="image_publisher_with_bounding_box" pkg="events_shaping_controller_control_control" type="publish_image_with_bounding_box.py" >
+  </node>-->
+
+  <group>
+
+    <node name="approach_commander" pkg="events_shaping_controller_control_control" type="command_approach_hardcoded_constraint.py">
+    </node>
+
+  </group>
+
+</launch>

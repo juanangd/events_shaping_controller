@@ -1,0 +1,14 @@
+<launch>
+    <!-- NOTE: This is highly hardware specific. 
+    Please specify the hostnames according to your setup.
+    Maybe substitute the addresses below for environment
+    variables, e.g., address=$(env CTRL_HOST) -->
+    <!-- TODO: Make this more generic. -->
+
+    <machine name="ctrl-machine" address="panda-ctrl5" default="true" 
+        user="$(env USER)" env-loader="/home/$(env USER)/main_ros1_ws/devel/env.sh" />
+
+    <machine name="display-machine" address="panda-ctrl5" default="true" 
+        user="$(env USER)" env-loader="/home/$(env USER)/main_ros1_ws/devel/env.sh" />
+
+</launch>

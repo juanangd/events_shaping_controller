@@ -1,0 +1,48 @@
+bounding_box:
+
+  bounding_box_center_is_camera_center: True
+  bounding_box_height: 200
+  bounding_box_width: 200
+  bounding_box_center_x: 173
+  bounding_box_center_y: 130
+
+gaze_lock_commander:
+
+  analyze_only_bounding_box: True
+  num_events_threshold: 300
+  maximum_num_events_to_process: 600 # set very high if the reduction of number of events is not required.
+  alpha_ema: 1. #  smoothed_jacobian = alpha_ema * current_jacobian + (1 - alpha_ema) * old_jacobian
+  learning_rate: 0.01 # 0.004 for image_area // 100 for variance // 0.002 for translation motion model
+  sharpness_function_type: image_area # image_area
+  params_to_evaluate:
+    - False
+    - True
+    - False
+  kp_control_jacobian: 0. #  2.3 // 1.5 for translation motion model
+  kp_control_centroid: 20.
+  motion_model: "rotation"
+  publish_jacobian: True
+  publish_events_analyzed: False
+
+heuristic_commander:
+
+  # ground_truth_distance: 0.489 # On table
+  # ground_truth_distance: 0.425 # On cube
+  ground_truth_distance: 0.269 # On cylinder
+  gain_vxy_modulation_based_centroids: 0. #1.
+  current_heuristic_mode: cycle_sinX+perturbation_sinZ # cycle_circularCW // cycle_sinY // cycle_circularCW // cycle_circularCCW // cycle_smoothConstantX
+  # current_heuristic_mode: cycle_sinY+perturbation_sinZ
+
+  heuristic_cycle:
+    gain_heuristic_cycle_control_commands: 0.1 # 0.05
+    freq_heuristic_cycle_control_commands: 0.5 # 0.2
+
+  heuristic_perturbation:
+    gain_heuristic_perturbation_control_commands: 0.0
+
+  heuristic_approach:
+    gain_heuristic_approach_control_commands: 0.
+    approach_command_cycle_interval: 3
+    freq_heuristic_approach_control_commands: 0.5
+    approach_extra_gain: 1.5
+

@@ -1,0 +1,1 @@
+This package is adapted from [franka_ros/franka_description](https://github.com/frankaemika/franka_ros/tree/develop/franka_description) (Commit: `55cc9356dcd5f1027810cf64583ead2949ac69c0`)
