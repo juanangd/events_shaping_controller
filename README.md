@@ -27,7 +27,7 @@ Features:
 1. Install libfranka and franka ros (https://frankaemika.github.io/docs/installation_linux.html)
 2. Crete a catkin_ws (http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
 3. Install rpg_ros_driver  (https://github.com/juanangd/rpg_dvs_ros)
-4. In the `catkin_ws/src`, clone this repo
+4. In the `catkin_ws/src`, clone this repo git (`git clone --recursive https://github.com/juanangd/events_shaping_controller.git`)
 5. From `catkin_ws`, run `catkin build`
 
 ## How to run?
